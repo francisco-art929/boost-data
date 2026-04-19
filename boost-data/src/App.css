@@ -21,3 +21,43 @@
 .modal-content input { padding: 15px; border-radius: 12px; background: #0b0f1a; border: 1px solid #2d364f; color: white; }
 .confirm-btn { background: #facc15; border: none; padding: 18px; border-radius: 14px; font-weight: 900; cursor: pointer; margin-top: 10px; }
 .cancel-btn { background: none; border: none; color: #94a3b8; cursor: pointer; }
+/* Fix for the Auto-Zooming on Mobile */
+input {
+  font-size: 16px !important;
+}
+
+/* Footer Styling */
+.footer {
+  background-color: #111;
+  color: white;
+  padding: 40px 20px;
+  margin-top: 50px;
+  text-align: center;
+  border-top: 2px solid #facc15;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.footer-logo span {
+  color: #facc15;
+}
+
+.footer-links {
+  margin: 20px 0;
+}
+
+.footer-links a {
+  color: #facc15;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: #666;
+}

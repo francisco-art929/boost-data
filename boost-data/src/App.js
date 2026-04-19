@@ -98,18 +98,17 @@ function App() {
                     <span>{p.price === 'custom' ? 'Type Amount' : `GH₵ ${p.price}`}</span>
                   </div>
                   
-                  {/* Inline Custom Input */}
                   {selectedItem?.name === p.name && p.price === 'custom' && (
                     <input 
                       type="number" 
                       className="inline-input" 
+                      style={{ fontSize: '16px' }} // Fixes the auto-zoom issue
                       placeholder="Enter Amount (GH₵)" 
                       autoFocus
                       onChange={(e) => setCustomAmount(e.target.value)} 
                     />
                   )}
 
-                  {/* Inline Buy Button */}
                   {selectedItem?.name === p.name && (
                     <button className="inline-buy-btn" onClick={() => setShowModal(true)}>
                       BUY NOW
@@ -127,14 +126,38 @@ function App() {
           <div className="modal-content">
             <h3>Finalize Payment</h3>
             <p>Paying: <span style={{color:'#facc15'}}>GH₵ {getFinalPrice()}</span></p>
-            <input placeholder="Your Full Name" onChange={e => setUserData({...userData, fullname: e.target.value})} />
-            <input placeholder="Email Address" onChange={e => setUserData({...userData, email: e.target.value})} />
-            <input placeholder="Recipient Number" onChange={e => setUserData({...userData, phone: e.target.value})} />
+            <input 
+              style={{ fontSize: '16px' }} 
+              placeholder="Your Full Name" 
+              onChange={e => setUserData({...userData, fullname: e.target.value})} 
+            />
+            <input 
+              style={{ fontSize: '16px' }} 
+              placeholder="Email Address" 
+              onChange={e => setUserData({...userData, email: e.target.value})} 
+            />
+            <input 
+              style={{ fontSize: '16px' }} 
+              placeholder="Recipient Number" 
+              onChange={e => setUserData({...userData, phone: e.target.value})} 
+            />
             <button className="confirm-btn" onClick={handlePay}>PAY SECURELY</button>
             <button className="cancel-btn" onClick={() => setShowModal(false)}>Back</button>
           </div>
         </div>
       )}
+
+      <footer className="footer">
+        <div className="footer-content">
+          <h3 className="footer-logo">BOOST<span>DATA</span></h3>
+          <p>Instant Data & Airtime Delivery</p>
+          <div className="footer-links">
+            <a href={`https://wa.me/${MY_WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">Support</a>
+            <a href="#">Terms</a>
+          </div>
+          <p className="copyright">© 2026 BoostData Ghana. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
