@@ -69,9 +69,14 @@ function App() {
   const handlePay = () => {
     if (!userData.fullname || !userData.email || !userData.phone) return alert("Fill all details!");
     if (getFinalPrice() <= 0) return alert("Enter a valid amount!");
+    
     initializePayment((ref) => {
+      // Create the WhatsApp message
       const msg = `✅ *PAYMENT VERIFIED*%0A👤 *Name:* ${userData.fullname}%0A📱 *Recipient:* ${userData.phone}%0A📦 *Plan:* ${selectedItem.name}%0A💰 *Paid:* GH₵ ${getFinalPrice()}`;
-      window.open(`https://wa.me/${MY_WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+      
+      // FIXED: Using location.href avoids popup blockers on mobile browsers
+      window.location.href = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${msg}`;
+      
       setShowModal(false);
     }, () => alert("Cancelled"));
   };
@@ -102,7 +107,7 @@ function App() {
                     <input 
                       type="number" 
                       className="inline-input" 
-                      style={{ fontSize: '16px' }} // Fixes the auto-zoom issue
+                      style={{ fontSize: '16px' }} 
                       placeholder="Enter Amount (GH₵)" 
                       autoFocus
                       onChange={(e) => setCustomAmount(e.target.value)} 
