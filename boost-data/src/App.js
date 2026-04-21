@@ -8,6 +8,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [userData, setUserData] = useState({ fullname: '', email: '', phone: '' });
 
+  // UPDATED: Your brother's correct number
   const MY_WHATSAPP_NUMBER = "233540952697"; 
 
   const getFinalPrice = () => {
@@ -71,10 +72,9 @@ function App() {
     if (getFinalPrice() <= 0) return alert("Enter a valid amount!");
     
     initializePayment((ref) => {
-      // Create the WhatsApp message
       const msg = `✅ *PAYMENT VERIFIED*%0A👤 *Name:* ${userData.fullname}%0A📱 *Recipient:* ${userData.phone}%0A📦 *Plan:* ${selectedItem.name}%0A💰 *Paid:* GH₵ ${getFinalPrice()}`;
       
-      // FIXED: Using location.href avoids popup blockers on mobile browsers
+      // Forces the browser to navigate to WhatsApp
       window.location.href = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${msg}`;
       
       setShowModal(false);
