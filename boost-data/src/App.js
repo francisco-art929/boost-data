@@ -21,7 +21,7 @@ function App() {
     reference: (new Date()).getTime().toString(),
     email: userData.email,
     amount: Math.round(getFinalPrice() * 100),
-    publicKey: 'pk_live_f41ad9f40e5f24bd6030566e8f1433d6900c1b11', 
+    publicKey: 'pk_live_f41ad9f40e5f24bd6030566e8f1433d6900c1b11'
     currency: 'GHS',
   };
 
